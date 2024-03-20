@@ -30,7 +30,12 @@ export const GlobalStyle = createGlobalStyle`
   *[hidden] {
       display: none;
   }
+  * {
+    box-sizing: border-box;
+  }
   body {
+    font-family: 'Maven Pro', 'Source Sans Pro', sans-serif;
+    font-size: 20px;
     line-height: 1;
   }
   menu, ol, ul {
@@ -47,13 +52,6 @@ export const GlobalStyle = createGlobalStyle`
   table {
     border-collapse: collapse;
     border-spacing: 0;
-  }
-  * {
-    box-sizing: border-box;
-  }
-  body {
-    font-family: 'Saira', 'Source Sans Pro', sans-serif;
-    font-size: 20px;
   }
   a {
     text-decoration:none;
