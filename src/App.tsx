@@ -9,8 +9,12 @@ import { theme } from "./theme";
 const Wrapper = styled.div`
   width: 100vw;
   height: 100vh;
-  background-color: #202020;
+  background: linear-gradient(135deg, #372155, #1e1543);
   color: #fff;
+`;
+
+const Container = styled.section`
+  padding: calc(2em + 64px) 2em 2em;
 `;
 
 export default function App() {
@@ -26,7 +30,9 @@ export default function App() {
       <Wrapper>
         <GlobalStyle />
         <Header />
-        <Outlet />
+        <Container>
+          <Outlet />
+        </Container>
       </Wrapper>
     </ThemeProvider>
   );

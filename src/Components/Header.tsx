@@ -1,74 +1,104 @@
 import styled from "styled-components";
 import Logo from "./Logo";
 import { Link, useMatch } from "react-router-dom";
-import { motion } from "framer-motion";
+import {
+  motion,
+  useAnimation,
+  useMotionValueEvent,
+  useScroll,
+} from "framer-motion";
 import { IconFire, IconFireFilled } from "./Icons/IconFire";
 import { IconPlaying, IconPlayingFilled } from "./Icons/IconPlaying";
 import { IconSmile, IconSmileFilled } from "./Icons/IconSmile";
 
-const HeaderBox = styled.header`
+const HeaderBox = styled(motion.header)`
   position: fixed;
-  left: 4vw;
-  top: 4vh;
+  left: 0;
+  top: 0;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
   gap: 1em;
-  width: fit-content;
-  padding: 1em;
-  border-radius: 1em;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  width: 100%;
+  max-height: 64px;
+  padding: 0 2em;
 `;
 
 const Nav = styled.nav``;
 
 const NavList = styled.ul`
   display: flex;
-  flex-direction: column;
   gap: 1em;
 `;
 
-const NavItem = styled.li`
+const NavItem = styled(motion.li)`
   a {
     position: relative;
     display: flex;
     align-items: center;
-    gap: 0.5em;
+    gap: 0.3em;
+    padding: 20px 4px 20px 2px;
   }
   svg {
     width: 22px;
     height: 22px;
   }
   span {
+    opacity: 0.5;
+    transition: opacity 0.2s;
+  }
+  a:hover > *,
+  .nav__active {
+    opacity: 1;
   }
 `;
-const ActiveMark = styled(motion.span)`
+const ActiveMark = styled(motion.div)`
   position: absolute;
-  left: -3px;
-  top: -3px;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  border: 1px solid #fff;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 4px;
+  background-color: #f7ddf9;
+  border-radius: 4px 4px 0 0;
+  box-shadow: 0 0 2px #b174cf, 0 0 4px #b174cf, 0 0 6px #b174cf;
 `;
+
+const headerVariants = {
+  top: {
+    borderBottom: "1px solid transparent",
+  },
+  scrolled: {
+    borderBottom: "1px solid rgba(255, 255, 255, 0.2)",
+  },
+};
 
 function Header() {
   const popularMatch = useMatch("/");
   const comingSoonMatch = useMatch("/coming-soon");
   const nowPlayingMatch = useMatch("/now-playing");
-
+  const { scrollY } = useScroll();
+  const headerAnimation = useAnimation();
+  useMotionValueEvent(scrollY, "change", (y) => {
+    console.log(y);
+    if (y < 1) {
+      headerAnimation.start("top");
+    } else {
+      headerAnimation.start("scrolled");
+    }
+  });
   return (
-    <HeaderBox>
+    <HeaderBox
+      variants={headerVariants}
+      initial="top"
+      animate={headerAnimation}
+    >
       <Logo />
       <Nav>
         <NavList>
           <NavItem>
             <Link to="/">
               {popularMatch ? <IconFireFilled /> : <IconFire />}
-              <span>POPULAR</span>
+              <span className={popularMatch ? "nav__active" : ""}>POPULAR</span>
               {popularMatch && <ActiveMark layoutId="active" />}
             </Link>
           </NavItem>
@@ -76,14 +106,18 @@ function Header() {
             <Link to="/coming-soon">
               {/* {comingSoonMatch ? <IconStarFilled /> : <IconStar />} */}
               {comingSoonMatch ? <IconSmileFilled /> : <IconSmile />}
-              <span>COMING SOON</span>
+              <span className={comingSoonMatch ? "nav__active" : ""}>
+                COMING SOON
+              </span>
               {comingSoonMatch && <ActiveMark layoutId="active" />}
             </Link>
           </NavItem>
           <NavItem>
             <Link to="/now-playing">
               {nowPlayingMatch ? <IconPlayingFilled /> : <IconPlaying />}
-              <span>NOW PLAYING</span>
+              <span className={nowPlayingMatch ? "nav__active" : ""}>
+                NOW PLAYING
+              </span>
               {nowPlayingMatch && <ActiveMark layoutId="active" />}
             </Link>
           </NavItem>
