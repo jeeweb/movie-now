@@ -5,6 +5,7 @@ const LogoStyle = styled.h1`
   display: flex;
   align-items: baseline;
   gap: 0.06em;
+  padding-top: 8px;
   font-family: "Timmana";
   font-size: 1.6em;
   letter-spacing: 0.02em;
