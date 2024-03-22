@@ -66,4 +66,8 @@ export const GlobalStyle = createGlobalStyle`
     color: inherit;
     cursor: pointer;
   }
+  body::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+  }
 `;

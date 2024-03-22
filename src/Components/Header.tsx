@@ -22,6 +22,7 @@ const HeaderBox = styled(motion.header)`
   width: 100%;
   max-height: 64px;
   padding: 0 2em;
+  z-index: 100;
 `;
 
 const Nav = styled.nav``;
@@ -37,7 +38,7 @@ const NavItem = styled(motion.li)`
     display: flex;
     align-items: center;
     gap: 0.3em;
-    padding: 20px 4px 20px 2px;
+    padding: 20px 5px 20px 2px;
   }
   svg {
     width: 22px;
@@ -69,6 +70,7 @@ const headerVariants = {
   },
   scrolled: {
     borderBottom: "1px solid rgba(255, 255, 255, 0.2)",
+    backdropFilter: "blur(10px)",
   },
 };
 
@@ -79,7 +81,7 @@ function Header() {
   const { scrollY } = useScroll();
   const headerAnimation = useAnimation();
   useMotionValueEvent(scrollY, "change", (y) => {
-    console.log(y);
+    // console.log(y);
     if (y < 1) {
       headerAnimation.start("top");
     } else {
