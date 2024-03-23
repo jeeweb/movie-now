@@ -35,8 +35,8 @@ export const GlobalStyle = createGlobalStyle`
   }
   body {
     font-family: 'Maven Pro', 'Source Sans Pro', sans-serif;
-    font-size: 20px;
-    line-height: 1;
+    
+  line-height: 1;
   }
   menu, ol, ul {
     list-style: none;
