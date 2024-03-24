@@ -38,7 +38,7 @@ const NavItem = styled(motion.li)`
     display: flex;
     align-items: center;
     gap: 0.3em;
-    padding: 20px 5px 20px 2px;
+    padding: 18px 5px 14px 2px;
   }
   svg {
     width: 22px;
@@ -67,6 +67,7 @@ const ActiveMark = styled(motion.div)`
 const headerVariants = {
   top: {
     borderBottom: "1px solid transparent",
+    backdropFilter: "blur(0)",
   },
   scrolled: {
     borderBottom: "1px solid rgba(255, 255, 255, 0.2)",

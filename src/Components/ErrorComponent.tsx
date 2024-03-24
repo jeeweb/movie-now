@@ -6,7 +6,7 @@ const ErrorSection = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%;
+  height: 50vh;
   font-size: 64px;
   font-weight: bold;
 `;
@@ -17,7 +17,7 @@ function ErrorComponent() {
       <p>
         <span>😦 Wait,</span>
         <br />
-        Something's Wrong
+        Something's Wrong..
       </p>
     </ErrorSection>
   );
