@@ -105,7 +105,26 @@ function Popular() {
   const onMovieClicked = (movieId: number) => {
     navigate(`/movies/${movieId}`);
   };
+  /*
+  useEffect(() => {
+    movieAnimate(movieScope.current, {
+      opacity: [0, 1],
+    });
+  }, [movieOrder]);
+  
+  // if (data && movieOrder < data?.results.length! - 1) {
+  //   setTimeout(() => {
+  //     setMovieOrder((prev) => prev + 1);
+  //   }, 3000);
+  // } else {
+  //   setTimeout(() => {
+  //     setMovieOrder(0);
+  //   }, 3000);
+  // }
+  console.log(movieOrder, data?.results.length);
+  */
 
+  // const clickedMovie = movieDetailMatch?.params.movieId && data?.results.find;
   return (
     <PopularSection>
       {isLoading ? (

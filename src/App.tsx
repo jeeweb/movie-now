@@ -9,13 +9,14 @@ import { theme } from "./theme";
 
 const Wrapper = styled(motion.div)`
   width: 100vw;
-  background: linear-gradient(135deg, #372155, #1e1543);
+  min-height: 100vh;
+  background: #0c071e;
   color: #fff;
   overflow-x: hidden;
 `;
 
 const Container = styled.div`
-  padding: calc(2em + 64px) 2em 2em;
+  padding-top: 36px;
   overflow-y: auto;
 `;
 
