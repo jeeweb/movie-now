@@ -1,16 +1,18 @@
 import styled from "styled-components";
-import { makeImagePath, IMovie } from "../api";
+import { IMovie, makeImagePath } from "../api";
 import { useNavigate, useMatch } from "react-router-dom";
 
 const MovieItemStyle = styled.li`
-  padding: 1vw;
-  width: calc((100vw - 4em - 3em - 8px) / 4);
-  border: 1px solid rgba(202, 114, 255, 0.3);
+  padding: 1px;
+  width: 100%;
+  border: 1px solid rgba(225, 176, 255, 0.3);
   border-radius: 20px;
-  background: rgba(129, 112, 255, 0.2);
-  box-shadow: 0 8px 32px 0 rgba(31 38 135, 0.4);
+  background: rgba(229, 208, 253, 0.2);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.4);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
+  box-shadow: 0 0 18px #b174cf;
+  overflow: hidden;
   cursor: pointer;
 `;
 
@@ -18,10 +20,8 @@ const ImgBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 16px;
   overflow: hidden;
-  height: 26vw;
+  width: 100%;
   img {
     width: 100%;
     height: auto;
@@ -36,9 +36,10 @@ const MovieTitle = styled.p`
 
 function MovieItem({ data }: { data: IMovie }) {
   const navigate = useNavigate();
-  const movieDetailMatch = useMatch(":movieId");
+  const movieDetailMatch = useMatch(`/movies/:movieId`);
+  console.log(movieDetailMatch);
   const onMovieClicked = (movieId: number) => {
-    navigate(`${movieId}`);
+    navigate(`/movies/${movieId}`);
   };
 
   return (
@@ -46,7 +47,7 @@ function MovieItem({ data }: { data: IMovie }) {
       <ImgBox>
         <img src={makeImagePath(data.poster_path)} alt={data.title} />
       </ImgBox>
-      <MovieTitle>{data.title}</MovieTitle>
+      {/* <MovieTitle>{data.title}</MovieTitle> */}
     </MovieItemStyle>
   );
 }

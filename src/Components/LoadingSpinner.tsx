@@ -11,7 +11,7 @@ const Loader = styled(motion.svg)`
   z-index: 2;
 
   .path {
-    stroke: rgba(228, 192, 246, 0.8);
+    stroke: rgba(228, 192, 246);
     stroke-linecap: round;
   }
 `;
