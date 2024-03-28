@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import HomeButton from "./HomeButton";
+import BackButton from "./BackButton";
 
 const ErrorSection = styled.div`
   position: relative;
@@ -6,7 +8,7 @@ const ErrorSection = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 90vh;
+  height: 80vh;
   font-size: 64px;
   font-weight: bold;
 
@@ -23,6 +25,12 @@ const ErrorSection = styled.div`
   }
 `;
 
+const ButtonBox = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 16px;
+`;
+
 function NotFound() {
   return (
     <ErrorSection>
@@ -31,6 +39,10 @@ function NotFound() {
         <br />
         PAGE NOT FOUND
       </p>
+      <ButtonBox>
+        <BackButton />
+        <HomeButton />
+      </ButtonBox>
     </ErrorSection>
   );
 }

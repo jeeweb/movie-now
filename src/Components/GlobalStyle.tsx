@@ -64,6 +64,7 @@ export const GlobalStyle = createGlobalStyle`
     font-family: inherit;
     font-size: inherit;
     color: inherit;
+    background-color: transparent;
     cursor: pointer;
   }
   body::-webkit-scrollbar {
